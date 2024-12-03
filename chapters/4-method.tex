@@ -1,0 +1,222 @@
+\chapter{Method}\label{sec:method}
+
+\begin{comment}
+The method chapter should describe in detail which activities you undertake to answer the research questions presented in the introduction, and why they were chosen. This includes detailed descriptions of experiments, surveys, computations, data analysis, statistical tests etc.
+\end{comment}
+
+In an effort to reach the three goals set for this project report, we have carried out a data collection process, a systematic literature review and a product exploration. The data collection process was conducted to reach our first goal of acquiring valid data for the development of an AI-driven system next semester. The systematic literature review and the product exploration has served to inform us of previous research and solutions in the field of automated analysis of open-text responses in education, aiding us in reaching our second goal. These activities also serve to aid us in formulating a research question for the final master thesis.
+
+
+\section{Data collection}
+To develop an AI-driven system for automatic analysis of open-text responses, it is imperative to have available relevant and valid data. The data will be used for experimentation with different AI methods in the further work with the master thesis.
+
+\subsection{Data requirements}
+The final developped system is intended to be deployed into a classroom or lecture hall. This will most likely be done through a student response system where students answer open-ended questions using their laptops or mobile devices. It is, therefore, important that the data be collected in a real class or lecture setting using a student response system. This way we can increase the chances of the data having the same quality and nature as the data that will eventually be served to the final system when it is deployed.
+
+To this end, we have defined a set of requirements that the collected data must adhere to for it to be regarded as relevant and valid. The requirements are as follows:
+
+\begin{enumerate}
+    \item The data shall be in the form of text
+    \item The data shall be produced by humans 
+    \item The data shall be produced as responses to questions or tasks through a student response system
+    \item The data shall be produced in a class or lecture setting
+    \item The data shall be in English or Norwegian
+    \item The data shall be anonymised so that individual persons cannot be traced to individual responses
+\end{enumerate}
+
+Requirement 1 serves to exclude non-textual responses such as audio, video, answers to multiple-choice questions and votes. It is now, in 2024, not uncommon for text to be produced by generative AI tools or through other computerised means. While a student prompting a generative AI tool to produce a response can provide insight into the student's understanding and sentiment, it is more valuable to have the text produced directly by the student itself. A human writing on a small smart phone screen is also more prone to make typos, write shorter responses and include profanities or slang than generative AI tools, which the final system would need to be able to deal with. As a consequence, requirement 2 restricts responses to be written by humans. This also excludes transcription of human speech. The final AI-driven system will likely be connected to a student response system, where it will in some way aggregate, sort or visualise textual responses to questions or tasks given by a teacher. Requirement 3 mirrors this, and requirement 4 ensures that the data is collected real-time in an educational context. It will be an important feature of the final system that it can automate the analysis adequatley and quickly enough for a teacher to use the analysis for actionable feedback during class or a lecture. Data from, for instance, offline surveys, assessments and discussion forums is not relevant, as students will often have more time to interpret the question or task, formulate the response and the teacher will have more time to understand the analysis, look at individual responses and plan out further action. Moreover, requirement 4 restricts the data to an educational environment. Open-text responses produced through student response systems, such as Mentimenter, are used in business environments, as well. However, the initial motivation for this master thesis was to help lecturers interpret open-text responses from their students, and as master students at NTNU, our main contact points are lecturers at the university who can take part in both the data collection and the evaluation of the final system. Language is restricted to English and Norwegian through requirement 5, as these are the two languages we authors master and that are used at NTNU. Both languages are included to avoid ending up with a system that only supports English, enabling us to experiment with multiple languages and language mixing in the responses. Lastly, requirement 6 states that the data must be anonymised. While we can find out which students took part in which lectures, it should not be possible for us as authors to determine which student wrote which response, in order to protect the students' privacy.
+
+
+\subsection{Data collection strategy}
+To collect the data, we have recruited lecturers at NTNU through a few differnt fora. This has been done to get recent data collected through student response systems with which we are familiar, and to have the opportunity to include the same lecturers in the evaluation process of the final system. Having our partners closeby to faciliate physical meetings or the opportunity to participate in lectures later to test the final system, has also played a role in this choice.
+
+Before reaching out, we created the question guide poster in appendix \ref{app:question-guide}. The poster contains a short note explaining the purpose of the data collection and our contact information. It then presents three guidelines with examples on how to formulate effective open-ended questions for use in large classrooms or lectures. Lastly, it shows two flow charts depicting the process of preparing a question and the data collection process. The intention of this poster was to hand it out to the lecturers after an initial meeting with them, serving both as a guide on how to formulate the type of open-ended questions we are looking for and as a reminder of how to perform the data collection. Creating the poster was also a way for us to think about which qualities a good open-ended question should possess to help students reflect, learn and provide useful feedback to the lecturer.
+
+In addition to this poster, we wrote the note in appendix \ref{app:recruitment-note}. This note would serve to inform interested lecturers about the goal of our master thesis, how they could help us collect data and how we could help them in return. The note also encourages lecturers to contact us through the provided contact information if they would be interested in collaborating with us on the data collection.
+
+To reach out to the lecturers, we employed three different fora. Firstly, the aforementionned note was shared on NTNU's intranet, ``Innsida'', by our supervisor. It was here posted under the channel of the faculty of information technology and electrical engineering, under which we and our supervisors belong. Members of the faculty are all in the cross-section of IT and education. This could make it easier for them to understand the purpose of our master thesis and the utility of the final result. Secondly, the note was shared by our co-supervisor with members of Excited, the Norwegian centre for excellence in IT education. This is an organisation associated with NTNU and Nord university with focus on research on the use of IT in education. We saw this as a relevant point of contact due to our overlapping research field, thinking that they may sit on relevant data or that there would be members who would take interest in the work and want to collaborate. We also held a short presentation for members of Excited about the master thesis and our need for help with the data collection. The last forum has been direct contact with lecturers through email. Together with our supervisor team, we have reached out to lecturers that we either know use student response systems or open-ended questions in their lecturers or that teach large classes. In the emails we have described the goal of the master thesis, what data we need and how the lecturer could help, offering to take a short meeting to discuss it.
+
+For each lecturer contacted, we asked both whether they already had anonymised data in the form of open-text responses that they would be willing to share, and whether they would be interested in collaborating with us on collecting more data throughout the semester. In the latter case, we would send them the question guide poster if they thought it would be helpful to them.
+
+\subsection{Data collection tools}
+One of the requirements for collecting the data is to do it through a student response system. Currently, lecturers at NTNU have access to mainly two student response systems, Mentimeter and Kahoot!.
+
+Mentimeter describes itelf as an audience engagement platform \cite{mentimeterAudienceResponse}. Mentimeter works by presenting slides to an audience, be that in a classroom, board meeting or at a conference. The system runs in a browser, and the audience can join from their own devices by inputing the presentation's pin on the Mentimeter website or scanning the QR-code. A slide can either feature mutlimedia content, a type of quiz competition, or an interactive question. The audience responses will be shown on the slides in real-time. Mentimeter provides many types of interactive questions, such as multiple choice, Q\&A and ranking. For this master thesis, we are only interested in the question type ``Open Ended'', which asks a question and lets the audience enter open-text responses of up to 200 characters per response. Mentimeter can collect responses anonymously out-of-the-box. For the lecturers that used Mentimeter, we would get access to the relevant Mentimeter presentations from where we could download the students' responses as .xlsx files. This way it would be less likely that a lecturer or someone else manipulates the results without us noticing, as we get the raw data straight from the source. After having downloaded the data, we would notify the lecturer to revoke our access to the Mentimeter presentations. This was done so that we would only having editing access to the presentations in a short time interval to avoid accidental edits and to reasssure the lecturers that we could not edit data without them noticing.
+
+Kahoot! is described as a learning and engagement platform, and its mission is to ``Make learning awesome'' \cite{kahootAboutKahoot}. Kahoot! uses gamification as the main driver for engagement and features a few different game modes. The ``classic'' mode is the most used. The audience connects to a Kahoot! session from their devices using a pin or QR-code through the Kahoot! app or website. They are then presented with some multimedia or questions. Answering a question gives users points, with extra points for answering correctly and quickly. Similarly to Mentimenter, Kahoot! has various question types. They divide the types into questions for testing knowledge and questions for collecting opinions. We are here only interested in the two types ``Open-ended'' and ``Brainstorm''. These serve to collect opinions and lets the audience enter open-text responses of up to 250 and 75 characters, respectively. Each response is connected to a username, however, meaning that the data is not anonymised. We, the authors, shall not have any way to connecting responses to actual students, so the anonymisation of data had to be done by the lecturers before sending the data to us. Kahoot! generates reports in the form of .xlsx files for each Kahoot! session. Of these reports, we are only interested in the type of question - whether it is, for instance, a brainstorming question, open-ended question, multiple-choice question - the question itself, and the text response from the students. We would, consequently, ask the lecturers to send us the data in the report sheet called ``RawReportData Data'' and remove all columns except from the question type, question and answer. We would then receive the data as a .xlsx file over email.
+
+\subsection{Data storage strategy}
+While the data is anonymised, it is still to be considered as ``internal'' data according to NTNU's data storage policy. This means that it cannot be stored in cloud services or similar not approved by NTNU. Following this, we opted for storing the data in Teams under a team called ``AI in the classroom'' featuring us and the three members of our supervisor team. This would give easy access to the data for the five of us, while respecting rules of NTNU's data storage policy.
+
+\section{Systematic literature review}
+As part of the work this semester, we have started conducting a systematic literature review (SLR) in cooperation with Talha. The SLR is based on the guidelines in \textit{the Preferred Reporting Items for Systematic reviews and Meta-Analyses} of 2020 (PRISMA 2020) \cite{prisma2020}. The work on the SLR will continue the upcoming semester, mainly to be conducted by Talha, with the end-goal of publishing it. The final paper will follow the exhaustive PRISMA 2020 checklist. This report, however, will only consider a subset of the items in line with the progress made thus far. In this section, we describe the process we have followed in conducting the SLR.
+
+% Describe the rationale for the review in the context of existing knowledge
+% Maybe include which literature reviews we have looked at
+\subsection{Rationale}
+This SLR ties into a greater research effort on utilising modern software tools to leverage the potential in learners' open-text responses in real-time to drive education forwards. Natural language processing has come far in the way of analysing large amounts of unstructured text and generative AI has brought many new opportunities.
+
+In the education domain, the systematic literature review of Gao et al. \cite{autoassessmentlitrev} has looked at the state of automatic assessment systems for text responses in post-secondary education between 2017 and 2023. They synthesised 93 papers, focusing on identifying different types of automatic assessment systems, the learning needs the systems address, the papers' research motivations, the performance of the systems and the future directions in the context of automated text-response assessment. They identified five different systems based on input, processing and output. Input ranged from short text answers from tests, questionnaires and proprietary systems to written essays and multi-modal. Output was in the form of numerical scores, labels, visualisations or text in the form of feedback to the students. The processing employed a variety of different AI and natural language processing methods, both supervised, unsupervised and generative AI techniques. Tasks such as semantic similarity, topic modelling and sentiment analysis were included, as well as generating textual feedback through large language models. Being a very recent publication - from 2023 - the review gives us a good idea of which techniques are used to handle open-text responses in education. However, the focus of the review is on assessing students' open-text responses and providing the students with personalised feedback to help them improve, which mainly concerns itself with analysing single student responses. We are, on the other hand, interested in analysing large amounts of student responses together to identify patterns or extract useful information.
+
+A systematic literature review that looks at the analysis of open-text responses more broadly, is that of Takaki \& Dutra \cite{textmininglitrev}. It found 52 papers from 2017 to 2021 that have studied how text mining has been used in distance higher education. 37 of these focus on improving upon traditional teaching by introducing tools to help with the more subjective aspects of teaching, promoting meaningful learning rather than simply automating mechanical tasks. Most of the papers address the instructor's challenge of managing the workload in the face of textual data from a large number of enroled students, be that in the form of feedback, questions or assessment answers. Some papers focused more on providing students with personalised feedback or guidance or helping management with decision making based on student responses. In terms of text mining tasks, text classification was the most common, followed by sentiment analysis, information extraction, chatbots, topic modelling and semantic similiarty. Only a single study tested large language models, which goes to show that the use of generative AI has only recently gained traction these past couple of years. Latent Dirichlet Allocation (LDA) was the single most used text mining method, employed in 10 of the papers. The review underlines that the research field of text mining in distance higher education was still in a very early phase, and that the availability of qualified data for text mining in education is lacking, especially in other languages than English. While this review, too, gives us a good pointer to which text mining tasks and methods are employed in education, it limits itself to distance higher education. In our case, it is relevant to expand this domain to also consider secondary education and classes with physical attendance.
+
+This SLR will investigate which and how AI and text mining methods are employed in the broader context of education to make sense of groups of anonymous open-text responses. As Gao et al. \cite{autoassessmentlitrev} have already looked into automatic assessment, this will not be part of this SLR. We will not consider personalised feedback systems either, something that Takaki \& Dutra \cite{textmininglitrev} included in their review. It is important that the open-text responses can be analysed without knowing who wrote it, as tying the analysis to identities would not make the text mining generalisable enough to be used in a student response system. With growth of generative AI, our SLR will also be better equiped to investigate how generative AI fares in this research field.
+
+\subsection{Eligibility criteria}
+% Specify the inclusion and exclusion criteria for the review and how studies were grouped for the syntheses.
+% \begin{itemize}
+%     \item Include papers from 2015 to 2024, inclusive
+%     \item Include journal articles and conference papers
+%     \item Include papers written in English
+%     \item Include primary research
+%     \item Include empirical studies and experimental setups
+%     \item Include papers in the education domain
+%     \item Include papers that apply AI to analyse some dataset of written open-text responses and evaluate the applied AI methods
+    
+%     \item Exclude short papers (posters, keynotes)
+%     \item Exclude papers without access to full text
+%     \item Exclude papers that are not peer-reviewed
+%     \item Exclude papers that rely on the open-text responses being associated with their respective authors
+%     \item Exclude papers that solely focus on automatic assessement
+% \end{itemize}
+In order to guide our selection of papers, we have developed a set of inclusion and exclusion critera. These are seen in table \ref{tab:eligibilitycriteria}. 
+
+\begin{table}[h!]
+\centering
+\caption{Inclusion and Exclusion Criteria}
+\label{tab:eligibilitycriteria}
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline
+\textbf{Inclusion Criteria} & \textbf{Exclusion Criteria} \\
+\hline
+IC1: Include papers from 2015 to 2024, inclusive & EC1: Exclude short papers \\
+\hline
+IC2: Include journal articles and conference papers & EC2: Exclude papers without access to full text \\
+\hline
+IC3: Include papers written in English & EC3: Exclude papers that are not peer-reviewed \\
+\hline
+IC4: Include primary research & EC4: Exclude papers that rely on the open-text responses being associated with their respective authors \\
+\hline
+IC5: Include empirical studies and experimental setups & EC5: Exclude papers that solely focus on automatic assessment \\
+\hline
+IC6: Include papers in the education domain & \\
+\hline
+IC7: Include papers that apply AI to analyse some dataset of written open-text responses and evaluate the applied AI methods & \\
+\hline
+\end{tabularx}
+\end{table}
+
+\subsection{Information sources}
+% Specify all databases, registers, websites, organisations, reference lists and other sources searched or consulted to identify studies. Specify the date when each source was last searched or consulted.
+To search for papers, we have both searched scientific databases and performed one iteration og forwards and backwards snowballing. The databases searched were \textit{Web of Science}, \textit{Scopus}, \textit{ACM Digital Library}, \textit{Proquest} and \textit{ERIC}. The search was carried out October 21st 2024. For the snowballing, we looked into the citations and references of all papers from the database search still included after full text screening. \textit{Google Scholar} was used to find and retrieve these papers if not directly reachable through a DOI. Snowballing was performed in the period from the 31st of October to the 16th of November 2024.
+
+\subsection{Search strategy}
+% Present the full search strategies for all databases, registers and websites, including any filters and limits used.
+
+To search the databases for relevant literature, we developed this search query
+
+\begin{quote}
+    \textit{(``text*'' OR ``response*'' OR ``answer*'' OR ``question*'') AND ((``teacher*'' OR ``instructor*'' OR ``educator*'') AND (``student*'' OR ``learner*'')) AND (``in-class'' OR ``classroom*'' OR ``lecture*'') AND (``artificial intelligence'' OR AI OR ``machine learning'' OR ML OR ``text mining'' OR ``data mining'' OR ``text analy*'' OR ``language processing'') NOT (grading OR scoring)}
+\end{quote}
+
+We used this query for all five databases, but had to change \textit{NOT} to \textit{AND NOT} in Scopus. The search query is made up of a few different components connected by the logical keywords \textit{AND}, \textit{OR} and \textit{NOT}. Table \ref{tab:searchquery} explains why these components are included. The asterisk is a wildcard that, here, mainly ensures that both the singular and plural forms of the words are part of the search.
+
+\begin{table}[h!]
+\centering
+\caption{Database search query composition}
+\label{tab:searchquery}
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline
+\textbf{Component} & \textbf{Purpose} \\
+\hline
+(``text*'' OR ``response*'' OR ``answer*'' OR ``question*'') & There are too many terms used for open-text responses to include them all. We, therefore, opt for these four more general terms \\
+\hline
+((``teacher*'' OR ``instructor*'' OR ``educator*'') AND (``student*'' OR ``learner*'')) & Anchor papers in education. Ensure that both instructors and learners are addressed, as we are interested in the interaction between these two parties \\
+\hline
+(``artificial intelligence'' OR AI OR ``machine learning'' OR ML OR ``text mining'' OR ``data mining'' OR ``text analy*'' OR ``language processing'') & Ensure that papers address the use of AI. We include som synonyms with emphasis on applying AI to text \\
+\hline
+(grading OR scoring) & Exclude papers focusing on automatic assessment \\
+\hline
+\end{tabularx}
+\end{table}
+
+We performed the search over the papers' titles, abstracts and keywords to avoid getting too many irrelevant results due to matches in the papers' full texts. The option for which parts of the papers to search differed somewhat, however, between the databases. We also set other filters and limits for the searches in line with our eligibility criteria. In some cases we included more document types than just journal articles and conference papers, but these were excluded during later screening. All the filters and limits are presented in table \ref{tab:filtersandlimits}.
+
+\begin{table}[h!]
+\centering
+\caption{Database search filters and limits}
+\label{tab:filtersandlimits}
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|}
+\hline
+\textbf{Database} & \textbf{Within} & \textbf{Year} & \textbf{Language} & \textbf{Type} & \textbf{Other} \\
+\hline
+Web of science & Topic & 2015-2024 & English & Papers, conference proceedings, review articles, early access & \\
+\hline
+Scopus & Article title, Abstract, Keywords & 2015-2024 & English & Conference paper, article, book chapter, conference review, book, review & \\
+\hline
+ACM Digital Library & Abstract & 2015-2024 & English & Research article & \\
+\hline
+Proquest & Anywhere except full text - NOFT & 2015-2024 & English & Article, feature, conference proceedings, review & Full text, Peer reviewed \\
+\hline
+ERIC & abstract: & 2015-2024 & & Journal articles & Full text available on ERIC, Peer reviewed only \\
+\hline
+\end{tabularx}
+\end{table}
+
+
+\subsection{Selection process}\label{sec:slr-selection-process}
+% Specify the methods used to decide whether a study met the inclusion criteria of the review, including how many reviewers screened each record and each report retrieved, whether they worked independently, and if applicable, details of automation tools used in the process.
+The selection process consisted of several steps of searching and screening.
+
+\begin{enumerate}
+    \item \textit{Database search}: We first inputed our search query into the five scientific databases and applied the filters and limits described in table \ref{tab:filtersandlimits}. The resulting papers were extracted to Endnote and Endnote was used to remove duplicate papers. The publication type, authors, publication year, title and abstract of each paper were at last exported from Endnote to an Excel document.
+    \item \textit{Abstract screening}: Before going through the full text of each paper, we applied the eligibility criteria to the titles and abstracts of the papers in the Excel document. The amount of papers were split in half between a PhD candidate and a master student, marking each paper as either ``Included'' or ``Excluded''. We did not provide an exclusion reason at this stage. In case of incertainty, the paper would be included for more scrutiny in the next phase.
+    \item \textit{Full text screening}: The papers included in the abstract screening, were copied to a new Excel sheet, again splitting the amount of papers between the same two people. The eligibility criteria were now applied to the full text. A reason was provided for why papers were excluded, and if one of us were uncertain about a paper, the other would go through it, as well.
+    \item \textit{Snowballing}: For any papers included after full text screening, we performed a single iteration of forwards and backwards snowballing. Forwards snowballing was done by going through the papers' citations and backwards snowballing by going through their references. In each case, we first applied the eligibility criteria to the titles. We then applied them to the abstracts of the papers whose titles fullfilled the criteria. After going through the relevant abstracts, the included papers would be added to yet another Excel sheet.
+    \item \textit{Snowballing full text screening}: We would then repeat the full text screening for the papers found during snowballing.
+\end{enumerate}
+
+After concluding the selection process, the papers left after full text screening of papers form both the database searches and the snowballing, were collected in a new Excel document ready for data extraction. Any duplicate papers not removed by Endnote would also be removed before this.
+
+\subsection{Data collection process}
+% Specify the methods used to collect data from reports, including how many reviewers collected data from each report, whether they worked independently, any processes for obtaining or confirming data from study investigators, and if applicable, details of automation tools used in the process
+To extract data from the included papers, we had a row for each paper in an Excel sheet. The columns represented different categories of data, with each cell containing one or more codes and optionally a comment in parentheses behind each code to add context or reasoning. The selected columns were based on the rationale for this SLR, but we also used the columns used in \cite{autoassessmentlitrev} and \cite{textmininglitrev} as inspiration. The initially selected columns were
+
+\begin{itemize}
+    \item Title of work
+    \item Author(s)
+    \item Year
+    \item Journal/Event
+    \item DOI
+    \item Abstract
+    \item Research motivation
+    \item Educational domain
+    \item Educational level
+    \item Learning environment
+    \item Target population
+    \item Educational theories
+    \item Data source
+    \item Data language(s)
+    \item Dataset size
+    \item AI tasks
+    \item Preprocessing
+    \item Number of algorithms used
+    \item Tools
+    \item Validation method
+    \item Evaluation metrics
+    \item Evaluation results
+    \item Educational benefits
+    \item Limitations
+    \item Future directions
+\end{itemize}
+
+
+For the codes, we employed an open coding approach, where we developed the codes as we read through te papers. Each code would be added to table in a separate Excel sheet for reference with a description. We started out with rather fine-grained codes, which were subsequently discussed and later merged where applicable. The data extraction was carried out by three people - the same two as did the screening in addition to another master student. We read through and coded a third of the papers each.
+
+The current results from the SLR will be reported in section \ref{sec:results-slr}. Here, we will also explain the current status of the SLR and the way forwards.
+
+% "Product hunt"
+\section{Tools exploration}
+\todo{How we looked into Mentimeter, Kahoot! etc.}
+
+% Maybe a new section regarding potential AI or other promising methods... 

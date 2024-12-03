@@ -147,6 +147,7 @@
 \RequirePackage[scaled=.88]{berasans}       % sans serif font
 \RequirePackage[scaled=.82]{DejaVuSansMono} % monospace font (for code)
 \RequirePackage{listings}                   % code listings
+\RequirePackage{tabularx}
 \RequirePackage{etoolbox}                   % fixing list of listings spacing
 \RequirePackage{babel}                      % language specifics
 \RequirePackage{geometry}                   % page layout
@@ -187,6 +188,7 @@
     \RequirePackage[noabbrev]{cleveref}
 \fi
 \RequirePackage[acronym]{glossaries}        % create a glossary and acronym list
+\RequirePackage{todonotes}
 
 %% CUSTOMISATION
 

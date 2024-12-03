@@ -1,8 +1,8 @@
 \documentclass[british,titlepage]{ntnuthesis}
 
-\title{An NTNU Thesis \LaTeX{} Document Class}
-\shorttitle{An NTNU Thesis Document Class}
-\author{Community of Practice in Computer Science Education at NTNU}
+\title{AI in the classroom}
+%\shorttitle{Project report}
+\author{Sander Østrem Fagernes \& Fredrik Fonn Hansen}
 \shortauthor{CoPCSE$@$NTNU}
 \date{CC-BY \ntnuthesisdate}
 
@@ -11,6 +11,8 @@
 \input{glossary.tex} % add glossary and acronym lists before document
 
 \begin{document}
+
+\listoftodos % Remove when done
 
 \input{chapters/0a-abstract.tex}
 \input{chapters/0b-sammendrag.tex}
@@ -24,16 +26,19 @@
 \printglossary                    % Print glossary
 
 \input{chapters/1-introduction}
-\input{chapters/2-usage.tex}
-\input{chapters/3-structure.tex}
-\input{chapters/4-conclusion.tex}
+\input{chapters/2-background}
+\input{chapters/3-related-work}
+\input{chapters/4-method}
+\input{chapters/5-discussion}
+\input{chapters/6-conclusion.tex}
 
-\chapter*{\bibname}
+\section*{\bibname}
 \printbibliography[heading=none]
 
-\input{chapters/papers.tex}
+% \input{chapters/papers.tex}
 
 \appendix
-\input{appendices/a-appendix.tex}
+\input{appendices/question-guide}
+\input{appendices/recruitment-note}
 
 \end{document}

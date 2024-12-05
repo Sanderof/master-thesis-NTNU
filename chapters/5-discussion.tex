@@ -4,19 +4,39 @@
 The results chapter should simply present the results of applying the methods presented in the method chapter without further ado. This chapter will typically contain many graphs, tables, etc. Sometimes it is natural to discuss the results as they are presented, combining them into a `Results and Discussion' chapter, but more often they are kept separate.
 
 Here you should discuss all aspect of your thesis and project. How did the process work? Which choices did you make, and what did you learn from it? What were the pros and cons? What would you have done differently if you were to undertake the same project over again, both in terms of process and product? What are the societal consequences of your work?
+
+IT2810 - Web development
+IT3021 - Game+
+TET4205 - Power system analysis 2
+IT3402 - Service design
+Trond Morten
+
+Innsida - Two reached out, one provided data
+Excited - No response
+Contact persons - 3
+Co-supervisor contact - 1
+Backup - Peer reviews
+
+Do we have enough data?
 \end{comment}
 
 \section{Collected data}
-\todo{Describe what data has been collected}
-\todo{Comment on validity/relevance of collected data}
 % Write about what we know about the data. In the final thesis, have a more in-depth analysis
 
+As described in section \ref{sec:data-collection-strategy}, we have reached out to potential collaborators through a few different channels with the goal of collected open-text responses submitted by students through a response system.
 
+Firstly, our attempt at reaching out to the members of Excited did not yield any result. As for the note published on Innsida, we had two lecturers reach out to us. One of them, a lecturer of an electrical engineering course, has collected open-text responses through Mentimeter this semester at regular intervals and shared the responses with us. The obtained dataset contains various types of questions, such as multiple-choice and scales, but also open-text questions. There are in total 337 responses, as of September 19th, written in English. The length varies from a single word to a couple of short sentences. The amount may increase if we receive the responses from the second half of the semester.
+
+In terms of lecturers we have reached out to directly, we have received responses from three, all within the domain of computer science. Two of the datasets are quite small. The first of them consists of 24 Norwegian responses distributed over three questions. The second consists of eight responses in Norwegian also distributed over three questions. Both datasets are collected through Mentimeter. These two datasets are hardly large enough to be of much use, as it is easy for a lecturer to look through all the responses to a question during a lecturer; there is no need for any computer-assisted analysis of the responses. The third dataset, on the other hand, is more extensive. It contains 15 questions with 478 English responses with between 19 and 43 responses per question. The responses vary from a single word to a short sentence. An interesting feature of this dataset is that some responses contain emojis, which is something that our system must handle.
+
+The last collected dataset was shared with us by a contact of our co-supervisor. They are also a lecturer at NTNU, and the dataset contains around 1000 responses collected over a few years in engineering courses. The responses are mainly in Norwegian. We are currently not in possession of the dataset, but we will receive it before starting experimentations next semester.
+
+In conclusion, we have managed to collect three datasets of sufficient size - around 1800 responses - and a sufficient number of responses per question for them to be valuable during experimentation with AI methods. We also have both English and Norwegian responses. At this point in time, we have not yet analysed the datasets. In the final master thesis, we will include a thorough analysis of the collected datasets.
 
 \section{Systematic literature review}\label{sec:results-slr}
 % Talk about the plans for the SLR for the next semester
 % Mention resources, search string, number of results, exclusions
-In this section we will present the results we have thus far from our SLR. We will also explain what is missing at this point in time and lay out the road ahead for the upcoming semester, spriing 2025.
+In this section, we will present the results we have thus far from our SLR. We will also explain what is missing at this point in time and lay out the road ahead for the upcoming semester, spring 2025.
 
 \subsection{Study selection}
 % Describe the results of the search and selection process, from the number of records identified in the search to the number of studies included in the review, ideally using a flow diagram
@@ -60,11 +80,17 @@ Until now we have been three people working on this SLR. This includes the two o
 \subsection{Main findings from papers}
 \todo{Describe which AI algorithms have been used, how data was collected and results}
 
-\subsection{Relevant future research} (gaps and limitations)
-\todo{What future research is needed in the field?}
+\section{Proprietary solutions}
+In addition to consulting literature, we have looked into how the two response systems, Mentimeter and Kahoot!, use AI to analyse open-text responses.
 
+Mentimeter provides two options for analysing open-text responses using AI. The summary feature can be used for the open-ended and word-cloud question types. After a few seconds of processing, Mentimeter will provide a summary in the form of a handful of key points, each around five words with a suitable emoji. The summary feature is briefly explained in \cite{mentisummary}. The grouping feature, explained in \cite{mentigrouping}, can be used for the open-ended question type. If a question has more than ten responses, they can be grouped according to themes. Labels are automatically assigned to each group, and the user can select a group to see the related responses. Except for explaining these features themselves, Mentimeter does not provide any information on how they are implemented, however.
+
+Kahoot! uses AI for clustering ideas submitted in response to their brainstorming question type. One of the developers at Kahoot!, who took part in implemented the clustering algorithm, explains how it works in \cite{kahootclustering}. He explains here that they have chosen an unsupervised clustering method. It uses the \textit{xlm-r-bert-base-nli-stsb-mean-tokens} model from the \textit{Sentence Transformers} Python library to create embeddings for the open-text responses. These embeddings are vector representations optimised for comparing semantic similarity between pieces of text. They then use a classical clustering method - he mentions \textit{K-means} in the article - and follow the \textit{elbow method} with a few optimisations to choose the appropriate number of clusters. As they had performance problems due to high dimentionality, they applied the \textit{TruncatedSVD} module from the \textit{scikit-learn} library to reduce it. While this algorithm has worked well, the article, which is from 2022, underlines that updates are in order. Newer transformer models have been made available and should be tested, auto-encoders should be explored to help reduce dimentionality of the embeddings, and other clustering algorithms should be checked out, such as \textit{HDBSCAN} and \textit{FAISS}.
+
+All of these features are tried and tested in practice, which goes to show that real-time analysis of open-text responses through response systems is, indeed, viable. While Mentimeter and Kahoot! have implemented clustering and summarisation, we intend to look into more methods, such as sentiment analysis, as well as whether methods can be combined.
 
 \section{Open problems in the domain}
+\todo{What future research is needed in the field?}
 
 
 

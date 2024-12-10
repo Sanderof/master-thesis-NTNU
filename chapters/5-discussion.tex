@@ -108,7 +108,7 @@ Kahoot! uses AI for clustering ideas submitted in response to their brainstormin
 All of these features are tried and tested in practice, which goes to show that real-time analysis of open-text responses through response systems is, indeed, viable. While Mentimeter and Kahoot! have implemented clustering and summarisation, we intend to look into more methods, such as sentiment analysis, as well as whether methods can be combined.
 
 \section{Open problems in the domain}
-\todo{What future research is needed in the field?}
+\todo{What challenges are there in implementing such a system?}
 
 \begin{comment}
 Conclusion from related work:
@@ -122,9 +122,9 @@ What appears to be the the most commonly mentioned one, is to increase generalis
 \end{comment}
 
 
-\section{Previous work in theory modules (IT3023)}
+\section{Previous work in theory modules (TDT06 \& TDT07)}
 \todo{Theory modules and prototype}
-In the theory module (course-id IT3023) we explored and investigated the domain of educational data analysis and dashboard design, with the goal of enhancing student engagement and performance. The primary focus was related to a dataset that monitored the usage of an educational dashboard in the context of performing a course related quiz. Our data analysis revealed that increased usage of dashboard was correlated to better academic scores. The dataset also contained information on question difficulty, and we could determine that all kinds of questions benefited, even though the most difficult questions had slightly more improvement.
+In the theory modules we explored and investigated the domain of educational data analysis and dashboard design, with the goal of enhancing student engagement and performance. The primary focus was related to a dataset that monitored the usage of an educational dashboard in the context of performing a course related quiz. Our data analysis revealed that increased usage of dashboard was correlated to better academic scores. The dataset also contained information on question difficulty, and we could determine that all kinds of questions benefited, even though the most difficult questions had slightly more improvement.
 
 Building on these findings, we developed a prototype of a new educational dashbord solution in Figma. Since dashboard usage was a major factor in educational performance, we desiged the prototype with a goal of making the user want to use the dashboard more. We made sure that metrics like progress-tracking, accuracy and time-management were cleaarly visible, so that the user could become aware of, and also see progress. Our hypothesis is that being able to see your own progress would make it more motivating to use, and thus increasing student performance. The dashboard also incorporated features to make performance feedback more actionable, aligning with principles of gamification and metacognitive feedback.
 
@@ -148,9 +148,9 @@ We will also strive in making sure both frontends are designed user-centric, res
 \subsection{Host frontend}
 We will create a host frontend that allows the user to create, host and view previous sessions. This frontend will be used by the organizer of the class, often a professor or teaching assistant. The frontend will support user-registration and authentication. For our prototype, only a simple form of username and password combination will be incorporated.
 
-After authenticating and logging in, the user will be able to start new sessions. When the session opens, it will display a session-code (6 letters) that users can enter to join the session. This screen is intended to be shared with the audience to ensure a smooth user experience for the audience. This can be done either via a TV screen or by broadcasting it to a digital platform. Then, the organizer can ask the audience questions in a format that looks familiar to sending a text message, while still sharing the same screen. 
+After authenticating and logging in, the user will be able to start new sessions. When the session opens, it will display a session-code (6 letters) that users can enter to join the session. This screen is intended to be shared with the audience to ensure a smooth user experience for the audience. This can be done either via a TV screen or by broadcasting it to a digital platform. Then, the organizer can ask the audience questions in a format that looks familiar to sending a text message, while still sharing the same screen. In the first stage, we will only allow the host to create questions live. In a more polished system, the host would also be able to set up the questions ahead of the lecture.
 
-The submissions from the audience will be displayed on the screen instantanously, and after enough responses have been received, the systen will begin to analyze results. For instance the system will try to group similar inputs together, as well as utilizing a mix of AI, text-mining and topic extractions [Reference to literature review]. The result of this processing will be visible after the countdown is finished.
+The submissions from the audience will be displayed on the screen instantanously, and after enough responses have been received, the systen will begin to analyze results. For instance the system will try to group similar inputs together, as well as utilizing a mix of AI and text-mining methods. Determining exactly which methods to use will be an important part of the work on the master's thesis the coming semester. The result of this processing will be visible after the countdown is finished.
 
 
 \subsection{Participant frontend}
@@ -165,27 +165,16 @@ The people who join the session will be able to answer questions anonymously. Th
     \item Write a question
     \item Submit feedback
 \end{enumerate}
-x
+
 
 \subsection{Backend}
-We will also need to create a backend that can interact with our two frontends. It must handle the sessions and take care of processing the inputs. The backend will be written in [JS/Python], and we propose to use [Express/Fastify] with websockets to be able to stream answers to the session-host. We plan to use REST-ful practices for the users who submit answers, and let the backend handle the websockets so that analysis and results are updated in realtime. To simplify our approach, we will not use a database to store resopnses, but rather an in-memory storage solution. The host will be able to downlad/save results after a session. [explain benefits and drawbacks of not using a db, and why not doing it is the correct choice for this master thesis]
+We will also need to create a backend that can interact with our two frontends. It must handle the sessions and take care of processing the inputs. The backend will be written in Python, and we propose to use FastAPI with websockets to be able to stream answers to the session-host. We plan to use REST-ful practices for the users who submit answers, and let the backend handle the websockets so that analysis and results are updated in realtime. To simplify our approach, we will not use a database to store responses, but rather an in-memory storage solution.
 
-We propose this simple approach to be able to make this prototype in enough time for the semester-start so that we can test in real classrooms as soon as possible. We find that mroe useful than having a performant and scalable solution. 
+We propose this simple approach to be able to make this prototype in enough time for the semester-start so that we can test in real classrooms as soon as possible. We find that more useful than having a performant and scalable solution. 
 
 
 \subsection{Infrastructure}
 We plan to host our backend on a NTNU hosted linux virtual machine exposed internally to the NTNU network. This reduces the overhead of the session hosts, as they do not have to run the code locally for themselves. It will also be beneficial for privacy, as only NTNU-users will be allowed to access the website, reducing the potential for attacks and data leaks/exposure. In order to ensure enough performance (while not a primary concern), we believe it should be able to handle at least 200 responses a second. We plan to run API-tests (load tests) before deploying and testing this prototype. THe reason is that we will limit our testing scope to classes on campus, and no classroom session will have enough students to send more responses than that.
-
-
-\subsection{Techniques}
-We plan to include AI, text mining, topic extraction, topic modelling. 
-
-We will also try to filter out profanity or slurs before sending the answer for further processing. 
-
-In addition, we will use OpenAI API (GPT) to analyse and group similar texts together, as research [find src] believes it is a good way of grouping texts. However we must include a GDPR-specification as sending data to a third party requirres extra care. We will implement an infomration of the students and we will also 
-
-[Also include basic theory of Text-mining, Topic-extraction, Topic-modelling, GPT… So that the reader does not need any prior knowledge to understand the master thesis]
-
 
 
 \section{Testing of prototype}
@@ -201,7 +190,7 @@ We plan to create an interview-guide that will be used to make structured interv
 
 
 \subsection{Quantitative analysis}
-For the quantitate analysis, we plan to implement a small questionnaire that will be shown to the students at the end of a session. The questions will be in the form of a likert scale (1-5) and represented as stars. We chose this feedback form to ensure it is as easy as possible for students to answer, and to avoid people not answering. This way we hope to get a lot of answers, at the cost of having few questions and no free-text input. [maybe have an optional free-text input after all stars are pressed].
+For the quantitate analysis, we plan to implement a small questionnaire that will be shown to the students at the end of a session. The questions will be in the form of a likert scale (1-5) and represented as stars. We chose this feedback form to ensure it is as easy as possible for students to answer, and to avoid people not answering. This way we hope to get a lot of answers, at the cost of having few questions and no free-text input. 
 
 The questions we ask:
 \begin{enumerate}

@@ -47,33 +47,42 @@ To mitigate these issues, educational technologies like student response systems
 \section{Open-ended questions in education}
 \todo{Effect of open-ended questions: reflection, critical thinking, bearbeide kunnskap}
 
+% \subsection{Live-questions (traditional)}
+% % not worth mentioning?
+% % Can be raise-of-hands as well? 
+
+% We have mostly focused on digital solutions, but it can be nice to get an overview of non-digital alternatives.
+
+% Raise-of-hands allow the lecturer to ask a question and cast a vote. This can either be yes/no, multiple-choice questions. While this is easy to implement, getting exact measures of distributions might be difficult. In digital classrooms, it might be difficult to get an overview if respondends have low camera quality or poor connection. In large lecture halls it might not be possible to see everyone present from the perspective of the lecturer.
 
 
 
-\section{Student response systems}
+\section{Response systems}
 \todo{Move text from 4.1.3 up here about Kahoot and Mentimeter}
 \todo{Eksisterende løsninger, og deres drawbacks}
 \todo{clickers, kahoot, åpne-spørsmål, live adjustments}
-% \cite{resyslitrev}
 % https://tophat.com/blog/classroom-clickers/
-In this chapter we will go through current and previous solutions that aims to increase student engagement. We will discuss their strengths and weaknesses, as well as potential ideas for improvements that we can build upon.
+Student response systems go by many names, such as classroom response systems, audience response systems, polling systems, clickers and electronic voting systems. However, in this report we will refer to them simply as ``response systems''. These systems are a form of interactive technology used to increase interaction between a presenter and the audience, mainly though allowing the audience to respond to the presenter's questions in real-time without the need for hand-raising or answering aloud. In the context of education, the presenter is the instructor and the audience is the students. Their history runs back to the 1970s, with their introduction in the education sphere starting in the 1990s. \cite{resyslitrev}
+
+% In this section we will go through current and previous solutions that aim to increase student engagement. We will discuss their strengths and weaknesses, as well as potential ideas for improvements that we can build upon.
+
 
 \subsection{Clickers}
-Clickers used in classrooms consists of a combination of hardware and software with the aim of increasing engagement and interactivity. The hardware is typically a combination of remote-controlled devices (similar to a TV-remote), and a receiver that can collect input from the remotes. It usually works by the teacher asking a question to the class, and then each individual can send in the answer. The teacher will usually be able to see the results and can share this with the class, for instance a digital dashboard solution can automatically create graphs and visualizations of how the students have answered. 
+Traditional clickers used in classrooms consist of a combination of hardware and software with the aim of increasing engagement and interactivity. The hardware is typically a combination of remote-controlled devices - similar to a TV-remote using infra-red or radio signals - and a receiver that can collect input from the remotes and aggregate the inputs \cite{shi2023}. An illustration of a clicker system can be seen in figure \ref{fig:clickersetup}. It usually works by the teacher asking a multiple-choice question to the class, and then each individual can send in the answer through these devices. The teacher will usually be able to see the results and can share them with the class. For instance, a digital dashboard solution can automatically create graphs and visualisations of how the students have answered. 
 
-Traditional clickers function by using infrared signal to send the response from the remote to the receiver. This can work for smaller classrooms, but large rooms and many students might create ambiguity of wether the response is collected by the receiver (the teacher will be able to see the responses immediately, but the students does not get any feedback. 
-
-Additionally, it is not possible to track answers between questions. Meaning it is not possible to implement things like scores etc...
-
-Clickers can provide engagement and potential for further discussions. It can also make the teacher aware of how the students understand the lecture contents, and can adjust thereafter. 
-\todo{Den støtter ikke H, men vi har pakken float installert i Main.tex??}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1\linewidth]{figures/clickers-illustration.png}
-    \caption{A typical classroom setup with clickers, a receiver and a tv}
-    \label{fig:A typical classroom setup with clickers, a receiver and a tv}
+    \includegraphics[width=.8\linewidth]{figures/clickers-illustration.png}
+    \caption{A typical classroom setup with clickers, a receiver and a display screen}
+    \label{fig:clickersetup}
 \end{figure}
 
+Compared to raising hands to answer questions or cast votes in the classroom, traditional clickers facilitates student-instructor interaction to a greater extent by allowing students to respond anonymously and providing instantaneous visualisations of the answers that can be acted upon. This also makes it possible for instructors to monitor students' understanding and misconceptions in large classrooms \cite{hunsu2016}. However, compared to more modern web-based response systems, traditional clickers are both more costly due to the need for dedicated hardware and more limited in that they only allow multiple-choice responses \cite{resyslitrev}. It is, additionally, hard to provide students with feedback on whether their responses have been registered or not and to track responses across multiple questions to implement features such as scores. This is because the remote-controlled devices do not have a graphical user interface and the signal only goes on way, from the devices to the receiver system.
+
+\subsection{Web-based response systems}
+Nowadays, web-based response systems have mostly replaced traditional clickers. These systems communicate over the internet, or in some cases over bluetooth, and can run in the a browser or as an app, which allows students to use their own mobile device, be that a smartphone, tablet or laptop \cite{resyslitrev}. This drives down the cost as hardware does not need to be acquired; it is usually enough to buy a licence from the vendor of the response system. Communication over the internet also comes with other advantages. Students can interact with the instructor and the rest of the class even when not being physically present in the classroom, making digital classrooms and MOOCs more engaging. It also allows for much more flexibility in how students use and engage with the system \cite{resyslitrev}. Instead of a controller with some buttons, the students are now met with a graphical interface. This way the students can receive more personalised feedback and elements of gamification can be added. The system is no longer restricted to multiple-choice questions anymore. An array of different question types are now featured in response systems, such as scales, item-ranking, word-clouds, and various forms of open-text responses.
+
+Kocak \cite{resyslitrev} has, through a systematic literature review on web-based response systems, found that response systems help fend off boredom during class. This is achieved through creating a more active and joyful learning environment, where students' are encouraged to actively participate in answering questions or solving tasks. Response systems make students find the classes more interesting, and by better maintaining their concentration and providing them with insight into what types of questions and tasks they may encounter in the future, response systems also help reduce anxiety and stress. The systems help instructors and students alike to discover knowledge-gaps through testing the students knowledge and through direct feedback submitted by students. Students are also informed of what their peers think and know in this way. Lastly, Kocak found that the ability to respond anynously is crucial for the students' willingness to participate actively. 
 
 \subsection{Kahoot!}
 Kahoot! is a software company that offers a digital solution where students use their mobile phone or computer as the tool for submitting answers.
@@ -103,18 +112,13 @@ Mentimeter also allows users to submit open-text responses, which can be showcas
 \todo{might also be able to visualize with boxes? (need to check this out)}
 \todo{include images of the actual offering?}
 
-\subsection{Live-questions (traditional)}
-% not worth mentioning?
-% Can be raise-of-hands as well? 
-
-We have mostly focused on digital solutions, but it can be nice to get an overview of non-digital alternatives.
-
-Raise-of-hands allow the lecturer to ask a question and cast a vote. This can either be yes/no, multiple-choice questions. While this is easy to implement, getting exact measures of distributions might be difficult. In digital classrooms, it might be difficult to get an overview if respondends have low camera quality or poor connection. In large lecture halls it might not be possible to see everyone present from the perspective of the lecturer. 
 
 \section{Challenges with the current systems}
-% Move to Discussion part
-\todo{Move to discussion part}
-% backbround should simply be information that people need to know before reading the thesis
+% Also include, positive impacts of our system
+% Se 3.5.2 i https://link.springer.com/article/10.1007/s10639-021-10732-8#Sec15 (altså \cite{resyslitrev})
+% TODO: Fredrik
+\todo{Challenges with the current systems}
+
 
 \section{Problem of interpreting open-ended questions}
 \todo{Large classrooms, actionable insights}
@@ -133,9 +137,6 @@ While smaller classes might make it feasible to read through all responses, it m
 % Explain how this can extract themes, gauge sentiment, or detect common misconceptions
 
 % Describe challenges of applying NLP to educational data, such as dealing with informal language, typos, or multilingual responses
-
-
-\section{Positive impacts of our proposed system}
 
 % Illustrate how AI-driven insights could influence lesson planning or live lecture adjustments, offering concrete examples like identifying misunderstood topics or gaps in student comprehension.
 

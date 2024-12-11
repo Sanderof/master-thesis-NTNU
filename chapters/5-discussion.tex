@@ -110,59 +110,60 @@ Kahoot! uses AI for clustering ideas submitted in response to their brainstormin
 All of these features are tried and tested in practice, which goes to show that real-time analysis of open-text responses through response systems is, indeed, viable. While Mentimeter and Kahoot! have implemented clustering and summarisation, we intend to look into more methods, such as sentiment analysis, as well as whether methods can be combined.
 
 \section{Implementation challenges and precautions}
-\todo{What challenges are there in implementing such a system?}
+From the literature and from other observations we have made during the work on the project, we have identified a handful of factors that we must take into account when developing the our system. The lack of literature on applying text mining methods to open-text responses from a response system, means that we have few examples to draw inspiration from directly. The most tried and true example seems to be the clustering algorithm developed by Kahoot!. While we can and will draw inspiration from the other collected literature, almost none of the papers have been faced with the real-time aspect of text mining, nor the use of it in a live physical classroom or lecture hall. We must, therefore, be careful to manage the dimensionality of our AI models and ensure that they are able to process the responses within, preferably, less than a minute. This will also make it difficult to train machine-learning models due to lack of relevant data and the instructor should not need to perform any manual analysis, such as labelling the clusters. Furthermore, we need to figure out what visualisations would be useful for an instructor and the students for them to gain useful and actionable insights into the open-text responses while in an ongoing class or lecture. This will contribute to decide which text mining methods to use and what post-processing to perform.
 
+While far from exclusive to our case, we must deal with various potentially problematic characteristics of the open-text responses that the system will receive. We must here consider typos, diacritics, emojis, emoticons, profanities, unserious and off-topic responses, ``shouting'', mixing of languages, typing in none-standardised dialect and more. It will be necessary to handle multiple languages, as well. In our case, this will be English and Norwegian. Compared to languages like English, Chinese, Arabic, Spanish and German, Norwegian is a rather small language that may not have as many resources for use in text mining. We are here talking about, for instance, lexicons and corpora for sentiment analysis, support in text mining libraries for pre-processing, filter lists, and pre-trained machine learning models.
 
-\begin{comment}
-Conclusion from related work:
-We see that there are many ways in which text mining methods can be applied to analyse open-text responses in education. Methods can either be used in isolation or several methods can be combined to gain a richer analysis. Both more traditional text mining approaches, such as topic modelling with LDA, and newer approaches using large language models are viable methods, and how we visualise the analysis results is of utmost importance for the usefulness in the eyes of the instructors. While there has been performed little research on text mining in a real-time education setting using response systems, we can undoubtably gain a lot of knowledge and inspiration from literature applying text mining in other education contexts. However, the real-time setting on which we are focusing sets a lot of requirements for our system. We may not have enough data to train or tune machine learning models, there may not be time for the instructor to perform any manual labelling of topics, and the processing must be finished within the span of a few minutes maximum.
-
-Future work SLR:
-What appears to be the the most commonly mentioned one, is to increase generalisability. This means that the AI methods in the study should be tested on more diverse data, for instance, on different courses, with different natural languages or a larger sample size. Somewhat related to this, a few studies reported that the evaluation process needs to be improved to be more certain of how well the AI methods perform. Another rather common mention was to increase granularity. Several studies found that performing, for instance, sentiment analysis over all open-text responses did not give enough insight. As such, performing sentiment analysis over each topic could give more insight into why the students feel a certain way. To help with insight, some studies also saw the need for developing or improving visualisations, usually in the form of dashboards. Yet another future work that was mentioned by several papers was to analyse non-textual data together with the textual data. This could be in the form of numerical data, such as exam grades or Likert-scale responses, or it could be video or audio recordings. We can also add improving performance of the methods and extending the current system with more features. Exactly what is referred to here depends very much on the AI method or system developed and tested in the study. Examples can be to create a more domain specific sentiment lexicon, combine individual methods into a a bigger system, extend with multilingual support and reduce dimensionality and resource requirements.
-
-\cite{textmininglitrev}
-\cite{autoassessmentlitrev}
-\end{comment}
-
-
-\section{Previous work in theory modules (TDT06 \& TDT07)}
-\todo{Theory modules and prototype}
+\section{Work from theory modules (TDT06 \& TDT07)}
 In the theory modules we explored and investigated the domain of educational data analysis and dashboard design, with the goal of enhancing student engagement and performance. The primary focus was related to a dataset that monitored the usage of an educational dashboard in the context of performing a course related quiz. Our data analysis revealed that increased usage of dashboard was correlated to better academic scores. The dataset also contained information on question difficulty, and we could determine that all kinds of questions benefited, even though the most difficult questions had slightly more improvement.
 
-Building on these findings, we developed a prototype of a new educational dashbord solution in Figma. Since dashboard usage was a major factor in educational performance, we desiged the prototype with a goal of making the user want to use the dashboard more. We made sure that metrics like progress-tracking, accuracy and time-management were cleaarly visible, so that the user could become aware of, and also see progress. Our hypothesis is that being able to see your own progress would make it more motivating to use, and thus increasing student performance. The dashboard also incorporated features to make performance feedback more actionable, aligning with principles of gamification and metacognitive feedback.
+Building on these findings, we developed a prototype of a new educational dashboard solution in Figma, as can be seen in \ref{fig:previous-work-theory-modules-prototype}. Since dashboard usage was a major factor in educational performance, we designed the prototype with a goal of making the user want to use the dashboard more. We made sure that metrics, like progress-tracking, quiz accuracy and time-management, were clearly visible, so that the user could become aware of, and also see progress. Our hypothesis was that being able to see your own progress would make it more motivating to use the dashboard, and thus again increasing student performance. The dashboard also incorporated features to make performance feedback more actionable, aligning with principles of gamification and metacognitive feedback.
 
-\section{Previous work in a previous master thesis}
-We have been informed by our supervisors regarding a previous Master thesis \todo{src} [src] that implemented a high performant and scalable system designed to collect and display digital submissions from students in the same kind of environment that we also will operate in. The thesis consist of a digital project with a backend and multiple frontends and services that together works like a streamlined classroom interaction tool that can handle textual submissions from students in a scalable and efficient way.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{figures//c5/previous-work.png}
+    \caption{Some of the screens in the prototype we built in the theory modules \cite{theoryModule3}}
+    \label{fig:previous-work-theory-modules-prototype}
+\end{figure}
 
-The ideal scenario would be that our project were built directly inside this scalable system created by Tomas. However, due to our needs of rapid development and prototyping, we have found it more beneficial to create our own simple services from scratch, which then later can be migrated or incorporated into Tomas architecture. We have not been able to contact Tomas regarding best practices of the software, further strengthening our decisions of starting from scratch.
+\section{Work from a previous master's thesis}
+We have been informed by our supervisors regarding a previous master's thesis \cite{Olsen2024}. The thesis implemented a high-performant and scalable system designed to collect and display digital submissions from students in the same kind of environment as we focus on. The thesis consists of a software project with a backend and multiple frontends and services that together works like a streamlined classroom interaction tool that can handle textual submissions from students in a scalable and efficient way.
 
-We believe it is more important that we get a working prototype that can be tested in real classrooms, rather than having an optimized performant solution. We will still make sure that our services will be able to handle enogh load to support at least a single classroom session at a time.
-
+The ideal scenario would be that our project is built directly into this scalable system. However, due to our needs of rapid development and prototyping, we have found it more beneficial to create our own simple services from scratch, which then later can be migrated or incorporated into the architecture. We have not been able to contact the writer of the thesis regarding use of and best practices related to the system, further strengthening our decision of building our own system from the ground up. We believe that it is more important that we get a working prototype that can be tested in real classrooms, rather than having an optimised, performant solution. We will still make sure that our services will be able to handle enough load to support at least a single classroom session at a time.
 
 \section{Plans for prototype}
-We plan to create a functional proof-of-concept based on our prototype. Feature wise it will consist of being able to create question-sessions, a classroom view where the teacher can ask question, as well as a participant client that allows for joining a session and answering questions. with functionality consisting of sessions, collecting answers, and processing/displaying them. To increase engagement we will add screens that incorporates visualization of statistics and statements.  
+We plan to create a functional proof-of-concept based on our prototype. Feature-wise it will consist of being able to create question-sessions, a classroom view where the teacher can ask questions, as well as a participant client that allows for joining a session and answering questions. With functionality consisting of sessions, collecting responses, and processing and displaying the result. To increase engagement we will add screens that incorporate visualisations of statistics and statements.  
 
-The processing of the student-answers will consist of a custom implementation of text-mining, topic/feature extraction, topic modelling, GPT-services and potentially even other AI methods. We do not plan to design new algorithms for these features, but rather implement and combine them in a context where they are most effective in a classroom setting. 
+The processing of the student responses will consist of a custom implementation of text-mining methods. We do not plan to design new algorithms for these features, but rather implement and combine them in a context where they are most effective in a classroom setting. 
 
-We will split our prototype up in three pieces, host-frontend, client-frontend, backend. This fall we have created a Figma prototype of the frontend and a plan of features for the backend. We plan to develop both frontends in React, as it is the most widespread frontend framework and is sufficient for the needs of our technical requirements. It is also the frontend framework that the authors are most familiar with. Since the choice of framework will not impact the prototype in any specific way, we chose the one best suited to our skillset so that we can spend the least amount of time on technical frontend development.
+We will split our prototype up in three pieces, host-frontend, client-frontend, backend. This autumn, we have created a Figma prototype of the frontend and a plan for features of the backend. We plan to develop both frontends in React, as it is the most widespread frontend framework and is sufficient for the needs of our technical requirements. It is also the frontend framework with which we are the most familiar. Since the choice of framework will not impact the prototype in any specific way, we chose the one best suited to our skill set so that we can spend the least amount of time on technical frontend development.
 
-We will also strive in making sure both frontends are designed user-centric, responsive and accessible. We plan to do iterations based on user-feedback. The extent of this process will be determined based on the initial user-feedback. We will design a mobile-first approach since the majority of users will use a phone. We plan to do simple user testing with corresponding interviews. We plan to use a frontend library with support for custom styling and accessibility features out of the box, like for instance Radix Primitives or React Aria.
+We will also strive in making sure both frontends are designed user-centric, responsive and accessible. We plan to do iterations based on user-feedback. The extent of this process will be determined based on the initial user-feedback. We will design a mobile-first approach since the majority of users will use a phone. We plan to do simple user testing with corresponding interviews. We plan to use a frontend library with support for custom styling and accessibility features out of the box, like, for instance, Radix Primitives or React Aria.
 
 \subsection{Host frontend}
-We will create a host frontend that allows the user to create, host and view previous sessions. This frontend will be used by the organizer of the class, often a professor or teaching assistant. The frontend will support user-registration and authentication. For our prototype, only a simple form of username and password combination will be incorporated.
+We will create a host frontend that allows the user to create, host and view previous sessions. This frontend will be used by the instructor. The frontend will support user-registration and authentication. For our prototype, only a simple form of username and password combination will be incorporated.
 
-After authenticating and logging in, the user will be able to start new sessions. When the session opens, it will display a session-code (6 letters) that users can enter to join the session. This screen is intended to be shared with the audience to ensure a smooth user experience for the audience. This can be done either via a TV screen or by broadcasting it to a digital platform. Then, the organizer can ask the audience questions in a format that looks familiar to sending a text message, while still sharing the same screen. In the first stage, we will only allow the host to create questions live. In a more polished system, the host would also be able to set up the questions ahead of the lecture.
+After authenticating and logging in, the user will be able to start new sessions. When the session opens, it will display a six letter session-code that users can enter to join the session. This screen is intended to be shared with the audience to ensure a smooth user experience. This can be done either via a TV screen or by broadcasting it to a digital platform. Then, the organiser can ask the audience questions in a format that looks familiar to sending a text message, while still sharing the same screen. In the first stage, we will only allow the host to create questions live. In a more polished system, the host would also be able to set up the questions ahead of the lecture.
 
-The submissions from the audience will be displayed on the screen instantaneously, and after enough responses have been received, the system will begin to analyze results. For instance the system will try to group similar inputs together, as well as utilizing a mix of AI and text-mining methods. Determining exactly which methods to use will be an important part of the work on the master's thesis the coming semester. The result of this processing will be visible after the countdown is finished.
+The submissions from the audience will be displayed on the screen instantaneously, and after enough responses have been received, the system will begin to analyse results. For instance, the system will try to group similar inputs together, as well as utilising a mix of text mining methods - determining exactly which methods to use will be an important part of the work on the master's thesis the coming semester. The result of this processing will be visible after the countdown is finished.
 
+\clearpage
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{figures//c5/host-frontend.png}
+    \caption{Host frontend flow}
+    \label{fig:host-frontend-flow}
+\end{figure}
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{figures//c5/session-frontend.png}
+    \caption{A flowchart of how a session-host will function}
+    \label{fig:session-host-flowchart}
+\end{figure}
 
 \subsection{Participant frontend}
-This frontend will allow users to join sessions, answer questions, and provide a review of the service. Since the users primarily will use a phone, the development will focus a “mobile-first” design priority. 
-
-The frontend will allow users to join a session by submitting a session code (6 letters).
-
-The people who join the session will be able to answer questions anonymously. The frontend will have three main states after a user joins, namely 
+This frontend will allow users to join sessions, answer questions, and provide a review of the service. Since the users will primarily use a smartphone, the development will prioritise ``mobile-first'' design. The frontend will allow users to join a session by submitting a session code (6 letters). The people who join the session will be able to answer questions anonymously. The frontend will have three main states after a user joins, namely 
 
 \begin{enumerate}
     \item Waiting for a question
@@ -171,30 +172,44 @@ The people who join the session will be able to answer questions anonymously. Th
 \end{enumerate}
 
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{figures//c5/user-frontend.png}
+    \caption{Participant frontend screens}
+    \label{fig:participant-frontend}
+\end{figure}
+
+
 \subsection{Backend}
-We will also need to create a backend that can interact with our two frontends. It must handle the sessions and take care of processing the inputs. The backend will be written in Python, and we propose to use FastAPI with websockets to be able to stream answers to the session-host. We plan to use REST-ful practices for the users who submit answers, and let the backend handle the websockets so that analysis and results are updated in realtime. To simplify our approach, we will not use a database to store responses, but rather an in-memory storage solution.
+We will also need to create a backend that can interact with our two frontends. It must handle the sessions and take care of processing the inputs. The backend will be written in Python, and we propose to use FastAPI with websockets to be able to stream answers to the session-host. We plan to use REST-ful practices for the users who submit answers, and let the backend handle the websockets so that analysis and results are updated in real-time. To simplify our approach, we will not use a database to store responses, but rather an in-memory storage solution.
 
 We propose this simple approach to be able to make this prototype in enough time for the semester-start so that we can test in real classrooms as soon as possible. We find that more useful than having a performant and scalable solution. 
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{figures//c5/backend.png}
+    \caption{Possible backend endpoints}
+    \label{fig:backend-endpoint-illustration}
+\end{figure}
 
 \subsection{Infrastructure}
-We plan to host our backend on a NTNU hosted linux virtual machine exposed internally to the NTNU network. This reduces the overhead of the session hosts, as they do not have to run the code locally for themselves. It will also be beneficial for privacy, as only NTNU-users will be allowed to access the website, reducing the potential for attacks and data leaks/exposure. In order to ensure enough performance (while not a primary concern), we believe it should be able to handle at least 200 responses a second. We plan to run API-tests (load tests) before deploying and testing this prototype. THe reason is that we will limit our testing scope to classes on campus, and no classroom session will have enough students to send more responses than that.
+We plan to host our backend on an NTNU hosted Linux virtual machine exposed internally to the NTNU network. This reduces the overhead of the session hosts, as they do not have to run the code locally for themselves. It will also be beneficial for privacy, as only NTNU-users will be allowed to access the website, reducing the potential for attacks and data leaks or exposure. In order to ensure enough performance - while not a primary concern - we believe it should be able to handle at least 200 responses a second. We plan to run API-tests (load tests) before deploying and testing this prototype. The reason is that we will limit our testing scope to classes on campus, and no classroom session will have enough students to send more responses than that.
 
 
 \section{Testing of prototype}
-To evaluate and test the performance of our prototype we will conduct both a quantitative and qualitative analysis approach. While it is possible to measure the performance of our AI models and techniques directly by using for instance accurracy, pricision or recall metrics, we believe that those are not sufficient to determine how our prototype performs as a Classroom Interaction Tool. Our evaluation will therefore not focus on the technical performance, but rather the practical utility and effectiveness of the tool itself. 
+To evaluate and test the performance of our prototype, we will conduct both a quantitative and qualitative analysis. While it is possible to measure the performance of our AI models and techniques directly by way of accuracy, precision or recall metrics, we believe that these are not sufficient to determine how our prototype performs as a Classroom Interaction Tool. Our evaluation will, therefore, not focus on the technical performance, but rather the practical utility and effectiveness of the tool itself. 
 
-The actual testing of our prototype will happen live during real lectures. In addition to the core functionality of allowing student-teacher interaction, we plan to collect quantitave data in the form of student feedback after a session is complete. Then we gather qualitative data afterwards through interviews with both teachers and students.
+The actual testing of our prototype will happen live during real lectures. In addition to the core functionality of allowing student-teacher interaction, we plan to collect quantitative data in the form of student feedback after a session is complete. Then we gather qualitative data afterwards through interviews with both teachers and students.
 
 
 \subsection{Qualitative analysis}
-A professor or teacher will be provided with instructions from us on how to use our prototype in the classroom. Then the professor will use the system in a lecture. After the lecture is done we will determine the performance of our solution via in-depth interviews from teachers and students. We will try to identify the participants perceived benefits and drawbacks of the system. We primarily want to identify if the system made lectures more engaging for students, simpler for the teacher and hopefully beneficial for the learning process and learning outcome.
+A professor or teacher will be provided with instructions from us on how to use our prototype in the classroom. Then the professor will use the system in a lecture. After the lecture is done we will determine the performance of our solution via in-depth interviews from teachers and students. We will try to identify the participants' perceived benefits and drawbacks of the system. We primarily want to identify if the system made lectures more engaging for students, simpler for the teacher and hopefully beneficial for the learning process and learning outcomes.
 
-We plan to create an interview-guide that will be used to make structured interviews. We will focus on specific use cases, perceived benefits and challenges. These findings will hopefully identify wether the prototype is promosing or if it requires more testing. We will also make sure to differentiate feedback between the solution as a concept, and feedback regarding the performance of our technical solutions. For instance while participants might enjoy the concept, our AI and other algorithms might require improvements in order to be felt as useful for the participants. In that case, the prototype itself might still be perceived as positive.
+We plan to create an interview-guide that will be used to make structured interviews. We will focus on specific use cases, perceived benefits and challenges. These findings will hopefully identify whether the prototype is promising or if it requires more testing. We will also make sure to differentiate feedback between the solution as a concept, and feedback regarding the performance of our technical solutions. For instance while participants might enjoy the concept, our AI and other algorithms might require improvements in order to be felt as useful for the participants. In that case, the prototype itself might still be perceived as positive.
 
 
 \subsection{Quantitative analysis}
-For the quantitate analysis, we plan to implement a small questionnaire that will be shown to the students at the end of a session. The questions will be in the form of a likert scale (1-5) and represented as stars. We chose this feedback form to ensure it is as easy as possible for students to answer, and to avoid people not answering. This way we hope to get a lot of answers, at the cost of having few questions and no free-text input. 
+For the quantitative analysis, we plan to implement a small questionnaire that will be shown to the students at the end of a session. The questions will be in the form of a likert-scale (1-5) and represented as stars. The screen can be seen in figure \ref{fig:participant-frontend}. We chose this feedback form to ensure it is as easy as possible for students to answer, and to avoid people not answering. This way we hope to get a lot of answers, at the cost of having few questions and no free-text input. 
 
 The questions we ask:
 \begin{enumerate}
@@ -203,9 +218,7 @@ The questions we ask:
     \item Did this tool make a positive impact?
 \end{enumerate}
 
-These questions are made to assess wether the tool enhanced the learning environment, engagement and/or comprehension.
-
-By combining the insights from both qualitative and quantitate data, we believe that we can get an understanding of the prototypes performance and potential for further development.
+These questions are made to assess whether the tool enhanced the learning environment, increased engagement and/or improved comprehension. By combining the insights from both qualitative and quantitate data, we believe that we can get an understanding of the prototype's performance and potential for further development.
 
 % Keep preliminary RQ as a goal instead of finding a concrete RQ
 

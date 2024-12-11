@@ -117,7 +117,7 @@ While far from exclusive to our case, we must deal with various potentially prob
 \section{Work from theory modules (TDT06 \& TDT07)}
 In the theory modules we explored and investigated the domain of educational data analysis and dashboard design, with the goal of enhancing student engagement and performance. The primary focus was related to a dataset that monitored the usage of an educational dashboard in the context of performing a course related quiz. Our data analysis revealed that increased usage of dashboard was correlated to better academic scores. The dataset also contained information on question difficulty, and we could determine that all kinds of questions benefited, even though the most difficult questions had slightly more improvement.
 
-Building on these findings, we developed a prototype of a new educational dashboard solution in Figma, as can be seen in \ref{fig:previous-work-theory-modules-prototype}. Since dashboard usage was a major factor in educational performance, we designed the prototype with a goal of making the user want to use the dashboard more. We made sure that metrics, like progress-tracking, quiz accuracy and time-management, were clearly visible, so that the user could become aware of, and also see progress. Our hypothesis was that being able to see your own progress would make it more motivating to use the dashboard, and thus again increasing student performance. The dashboard also incorporated features to make performance feedback more actionable, aligning with principles of gamification and metacognitive feedback.
+Building on these findings, we developed a prototype of a new educational dashboard solution in Figma, as can be seen in figure \ref{fig:previous-work-theory-modules-prototype}. Since dashboard usage was a major factor in educational performance, we designed the prototype with a goal of making the user want to use the dashboard more. We made sure that metrics, like progress-tracking, quiz accuracy and time-management, were clearly visible, so that the user could become aware of, and also see progress. Our hypothesis was that being able to see your own progress would make it more motivating to use the dashboard, and thus again increasing student performance. The dashboard also incorporated features to make performance feedback more actionable, aligning with principles of gamification and metacognitive feedback.
 
 \begin{figure}[h!]
     \centering
@@ -132,7 +132,7 @@ We have been informed by our supervisors regarding a previous master's thesis \c
 The ideal scenario would be that our project is built directly into this scalable system. However, due to our needs of rapid development and prototyping, we have found it more beneficial to create our own simple services from scratch, which then later can be migrated or incorporated into the architecture. We have not been able to contact the writer of the thesis regarding use of and best practices related to the system, further strengthening our decision of building our own system from the ground up. We believe that it is more important that we get a working prototype that can be tested in real classrooms, rather than having an optimised, performant solution. We will still make sure that our services will be able to handle enough load to support at least a single classroom session at a time.
 
 \section{Plans for prototype}
-We plan to create a functional proof-of-concept based on our prototype. Feature-wise it will consist of being able to create question-sessions, a classroom view where the teacher can ask questions, as well as a participant client that allows for joining a session and answering questions. With functionality consisting of sessions, collecting responses, and processing and displaying the result. To increase engagement we will add screens that incorporate visualisations of statistics and statements.  
+We plan to create a functional proof-of-concept based on our prototype. Feature-wise it will consist of being able to create question-sessions, a classroom view where the teacher can ask questions, as well as a participant client that allows for joining a session and answering questions. The functionality then consists of sessions, collecting responses, and processing and displaying the result. To increase engagement we will add screens that incorporate visualisations of statistics and statements.
 
 The processing of the student responses will consist of a custom implementation of text-mining methods. We do not plan to design new algorithms for these features, but rather implement and combine them in a context where they are most effective in a classroom setting. 
 
@@ -141,9 +141,9 @@ We will split our prototype up in three pieces, host-frontend, client-frontend, 
 We will also strive in making sure both frontends are designed user-centric, responsive and accessible. We plan to do iterations based on user-feedback. The extent of this process will be determined based on the initial user-feedback. We will design a mobile-first approach since the majority of users will use a phone. We plan to do simple user testing with corresponding interviews. We plan to use a frontend library with support for custom styling and accessibility features out of the box, like, for instance, Radix Primitives or React Aria.
 
 \subsection{Host frontend}
-We will create a host frontend that allows the user to create, host and view previous sessions. This frontend will be used by the instructor. The frontend will support user-registration and authentication. For our prototype, only a simple form of username and password combination will be incorporated.
+We will create a host frontend that allows the user to create, host and view previous sessions. This frontend will primarily be used by the instructor. Figure \ref{fig:host-frontend-flow} shows how a user will navigate to start a new session. The frontend will support user-registration and authentication. For our prototype, only a simple form of username and password combination will be incorporated.
 
-After authenticating and logging in, the user will be able to start new sessions. When the session opens, it will display a six letter session-code that users can enter to join the session. This screen is intended to be shared with the audience to ensure a smooth user experience. This can be done either via a TV screen or by broadcasting it to a digital platform. Then, the organiser can ask the audience questions in a format that looks familiar to sending a text message, while still sharing the same screen. In the first stage, we will only allow the host to create questions live. In a more polished system, the host would also be able to set up the questions ahead of the lecture.
+After authenticating and logging in, the user will be able to start new sessions. When the session opens, it will display a six letter session-code that users can enter to join the session, see figure \ref{fig:session-host-flowchart} for an illustration of the process. This screen is intended to be shared with the audience to ensure a smooth user experience. This can be done either via a TV screen or by broadcasting it to a digital platform. Then, the organiser can ask the audience questions in a format that looks familiar to sending a text message, while still sharing the same screen. In the first stage, we will only allow the host to create questions live. In a more polished system, the host would also be able to set up the questions ahead of the lecture.
 
 The submissions from the audience will be displayed on the screen instantaneously, and after enough responses have been received, the system will begin to analyse results. For instance, the system will try to group similar inputs together, as well as utilising a mix of text mining methods - determining exactly which methods to use will be an important part of the work on the master's thesis the coming semester. The result of this processing will be visible after the countdown is finished.
 
@@ -151,7 +151,7 @@ The submissions from the audience will be displayed on the screen instantaneousl
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1\linewidth]{figures//c5/host-frontend.png}
-    \caption{Host frontend flow}
+    \caption{Host-frontend flowchart}
     \label{fig:host-frontend-flow}
 \end{figure}
 
@@ -171,6 +171,8 @@ This frontend will allow users to join sessions, answer questions, and provide a
     \item Submit feedback
 \end{enumerate}
 
+The screens can be seen in figure \ref{fig:participant-frontend}
+
 
 \begin{figure}[h!]
     \centering
@@ -183,7 +185,7 @@ This frontend will allow users to join sessions, answer questions, and provide a
 \subsection{Backend}
 We will also need to create a backend that can interact with our two frontends. It must handle the sessions and take care of processing the inputs. The backend will be written in Python, and we propose to use FastAPI with websockets to be able to stream answers to the session-host. We plan to use REST-ful practices for the users who submit answers, and let the backend handle the websockets so that analysis and results are updated in real-time. To simplify our approach, we will not use a database to store responses, but rather an in-memory storage solution.
 
-We propose this simple approach to be able to make this prototype in enough time for the semester-start so that we can test in real classrooms as soon as possible. We find that more useful than having a performant and scalable solution. 
+We propose this simple approach to be able to make this prototype in enough time for the semester-start so that we can test in real classrooms as soon as possible. We find that more useful than having a performant and scalable solution. In figure \ref{fig:backend-endpoint-illustration} we have illustrated how we visualize the backend and its endpoints will communicate with the user and host frontend.
 
 \begin{figure}[h!]
     \centering
